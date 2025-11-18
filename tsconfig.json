@@ -1,0 +1,15 @@
+
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "target": "es2022",
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types"]
+  }
+}

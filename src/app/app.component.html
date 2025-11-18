@@ -1,0 +1,17 @@
+<h1>Angular 17 Signals Demo</h1>
+
+<app-custom-input [(model)]="name"></app-custom-input>
+
+<p>{{ greeting() }}</p>
+
+<h2>Counter</h2>
+<p>{{ storage.counter() }}</p>
+
+<button (click)="storage.increment()">+1</button>
+<button (click)="storage.reset()">Reset</button>
+
+<app-host-demo></app-host-demo>
+
+<app-content-view-demo>
+  <p #projectedParagraph>Projected paragraph</p>
+</app-content-view-demo>
