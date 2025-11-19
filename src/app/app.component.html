@@ -1,4 +1,4 @@
-<h1>Angular 17 Signals Demo</h1>
+<!-- <h1>Angular 17 Signals Demo</h1>
 
 <app-custom-input [(model)]="name"></app-custom-input>
 
@@ -14,4 +14,117 @@
 
 <app-content-view-demo>
   <p #projectedParagraph>Projected paragraph</p>
-</app-content-view-demo>
+</app-content-view-demo> -->
+
+
+<form [formGroup]="profileForm" (ngSubmit)="submit()">
+
+  <fieldset formGroupName="account">
+    <legend>Account</legend>
+
+    <div>
+      <label>Username</label>
+      <input type="text" formControlName="username" />
+
+      <div *ngIf="username?.touched && username.invalid">
+        <small *ngIf="username.errors?.['required']">Username is required.</small>
+        <small *ngIf="username.errors?.['minlength']">
+          Minimum 3 characters.
+        </small>
+        <small *ngIf="username.errors?.['forbiddenUsername']">
+          'admin' is not allowed.
+        </small>
+        <small *ngIf="username.errors?.['usernameTaken']">
+          This username is already taken.
+        </small>
+      </div>
+
+      <small *ngIf="username?.pending">Checking availability...</small>
+    </div>
+
+
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="account.get('email')?.touched && account.get('email')?.invalid">
+        <small *ngIf="account.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+        <small *ngIf="account.get('email')?.errors?.['email']">
+          Invalid email.
+        </small>
+      </div>
+    </div>
+
+    <div formGroupName="passwordGroup">
+      <label>Password</label>
+      <input type="password" formControlName="password" />
+
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword" />
+
+      <div *ngIf="passwordGroup.touched && passwordGroup.invalid">
+        <small *ngIf="passwordGroup.errors?.['passwordMismatch']">
+          Passwords do not match.
+        </small>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset formGroupName="contact">
+    <legend>Contact</legend>
+
+    <div formArrayName="phones">
+      <h4>Phone Numbers</h4>
+      <div *ngFor="let phoneGroup of phones.controls; let i = index" [formGroupName]="i">
+        <select formControlName="type">
+          <option value="mobile">Mobile</option>
+          <option value="home">Home</option>
+          <option value="work">Work</option>
+        </select>
+
+        <input type="text" formControlName="number" placeholder="Phone number" />
+
+        <button type="button" (click)="removePhone(i)" [disabled]="phones.length === 1">
+          Remove
+        </button>
+      </div>
+      <button type="button" (click)="addPhone()">Add phone</button>
+
+      <div *ngIf="contact.errors?.['noPhones'] && contact.touched">
+        <small>At least one phone number is required.</small>
+      </div>
+    </div>
+
+    <div formArrayName="addresses">
+      <h4>Addresses</h4>
+      <div *ngFor="let addrGroup of addresses.controls; let i = index" [formGroupName]="i">
+        <input type="text" formControlName="line1" placeholder="Address line 1" />
+        <input type="text" formControlName="line2" placeholder="Address line 2" />
+        <input type="text" formControlName="city" placeholder="City" />
+        <input type="text" formControlName="country" placeholder="Country" />
+
+        <button type="button" (click)="removeAddress(i)" [disabled]="addresses.length === 1">
+          Remove
+        </button>
+      </div>
+      <button type="button" (click)="addAddress()">Add address</button>
+    </div>
+  </fieldset>
+
+  <div>
+    <label>
+      <input type="checkbox" formControlName="termsAccepted" />
+      I accept the terms and conditions
+    </label>
+    <div *ngIf="profileForm.get('termsAccepted')?.touched && profileForm.get('termsAccepted')?.invalid">
+      <small>You must accept the terms.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="profileForm.invalid || profileForm.pending">
+    Submit
+  </button>
+
+  <pre>{{ profileForm.value | json }}</pre>
+</form>

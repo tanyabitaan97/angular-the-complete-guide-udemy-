@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { InjectionToken } from '@angular/core';\nexport const LOGGING_TOKEN = new InjectionToken('LOGGING_TOKEN');","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
