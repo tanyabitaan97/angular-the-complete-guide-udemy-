@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const canDeactivateGuard = component => {\n  if (component.hasUnsavedChanges) {\n    return confirm('You have unsaved changes. Really leave?');\n  }\n  return true;\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -28,7 +28,7 @@
 //   onSearch(e: any) { this.apiService.searchPosts(e.target.value); }
 //   loadMerged() { this.apiService.getPosts(); }
 // }
-
+/*
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -179,4 +179,34 @@ export class AppComponent implements OnInit {
     console.log('Form raw value:', this.profileForm.getRawValue());
   }
 }
+*/
+
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Angular 17+ Router Demo</h1>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+      <a routerLink="/users" routerLinkActive="active">Users</a>
+      <a routerLink="/parent" routerLinkActive="active">Nested</a>
+      <a routerLink="/guarded/edit" routerLinkActive="active">Guarded Edit</a>
+    </nav>
+
+    <hr />
+
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    nav a { margin-right: 1rem; }
+    .active { font-weight: bold; text-decoration: underline; }
+  `]
+})
+export class AppComponent {}
+
 

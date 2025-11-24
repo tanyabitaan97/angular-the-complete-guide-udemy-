@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const titleResolver = route => {\n  const id = route.paramMap.get('id');\n  return `User ${id} Details`;\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const userResolver = route => {\n  const id = route.paramMap.get('id');\n  return Promise.resolve({\n    id,\n    name: 'User #' + id\n  });\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
