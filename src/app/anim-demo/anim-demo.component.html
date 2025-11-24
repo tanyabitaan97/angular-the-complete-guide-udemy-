@@ -1,0 +1,25 @@
+<h2>Angular 17 Animation Example</h2>
+
+<div
+  [@changeColor]="colorState"
+  [@switchState]="sizeState"
+  class="box"
+  (click)="toggleColor(); toggleSize();"
+>
+  Click Me (Toggle)
+</div>
+
+<p *ngIf="true" @enterLeave>Element Enter/Leave Animation</p>
+
+<button [@keyframeAnim] (click)="toggleSize()">Keyframe Animation</button>
+
+<button [@groupAnim] (click)="toggleColor()">Group Animation</button>
+
+<button
+  [@callbackAnim]="callbackState"
+  (@callbackAnim.done)="animationDone($event)"
+  (click)="startCallback()"
+>
+  Animation Callback
+</button>
+

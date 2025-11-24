@@ -10,6 +10,7 @@ import { ConsoleLoggingService } from './logging.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -22,6 +23,7 @@ import { userResolver } from './user.resolver';
 import { titleResolver } from './title.resolver';
 import { authGuard } from './auth.guard';
 import { canDeactivateGuard } from './can-deactivate.guard';
+import { AnimDemoComponent } from './anim-demo/anim-demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -93,10 +95,10 @@ export const routes: Routes = [
 
 
 @NgModule({
-  declarations:[CustomInputComponent,HostDemoComponent,
+  declarations:[CustomInputComponent,HostDemoComponent,AnimDemoComponent ,
     ContentViewDemoComponent,AppComponent, HomeComponent, UsersComponent,UserDetailComponent,
     ParentComponent,ChildComponent,GuardedEditComponent],
-  imports:[BrowserModule,FormsModule, HttpClientModule,CommonModule, ReactiveFormsModule,
+  imports:[BrowserModule,FormsModule, HttpClientModule,CommonModule, ReactiveFormsModule,BrowserAnimationsModule,
     RouterModule.forRoot(routes)],
   providers:[
     { provide: LOGGING_TOKEN, useClass: ConsoleLoggingService },

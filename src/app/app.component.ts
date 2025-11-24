@@ -189,6 +189,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   template: `
     <h1>Angular 17+ Router Demo</h1>
 
+    <h1>Angular 17 Animation with AppModule</h1>
+    <app-anim-demo></app-anim-demo>
+
     <nav>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         Home
