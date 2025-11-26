@@ -1,0 +1,17 @@
+.container {
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.offline-banner {
+  background: #ffc107;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.update-banner {
+  background: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}

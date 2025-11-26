@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -24,10 +24,15 @@ import { titleResolver } from './title.resolver';
 import { authGuard } from './auth.guard';
 import { canDeactivateGuard } from './can-deactivate.guard';
 import { AnimDemoComponent } from './anim-demo/anim-demo.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { ProductComponent } from './product/product.component';
+import { AuthComponent } from './auth/auth.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-
+  { path: 'auth', component: AuthComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
   {
     path: 'home',
     loadComponent: () =>
@@ -95,15 +100,23 @@ export const routes: Routes = [
 
 
 @NgModule({
-  declarations:[CustomInputComponent,HostDemoComponent,AnimDemoComponent ,
-    ContentViewDemoComponent,AppComponent, HomeComponent, UsersComponent,UserDetailComponent,
-    ParentComponent,ChildComponent,GuardedEditComponent],
-  imports:[BrowserModule,FormsModule, HttpClientModule,CommonModule, ReactiveFormsModule,BrowserAnimationsModule,
-    RouterModule.forRoot(routes)],
-  providers:[
+  declarations: [CustomInputComponent, HostDemoComponent, AnimDemoComponent,
+    ContentViewDemoComponent, AppComponent, HomeComponent, UsersComponent, UserDetailComponent,
+    ParentComponent, ChildComponent, GuardedEditComponent, ProductComponent,AuthComponent, DashboardComponent],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }), HttpClientModule, CommonModule, ReactiveFormsModule, BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    })],
+  providers: [
     { provide: LOGGING_TOKEN, useClass: ConsoleLoggingService },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
-  bootstrap:[AppComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

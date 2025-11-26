@@ -102,6 +102,6 @@ export class AnimDemoComponent {
   }
 
   animationDone(event: any) {
-    alert('Animation Finished! 🤩');
+   // alert('Animation Finished! 🤩');
   }
 }

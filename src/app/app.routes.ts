@@ -9,10 +9,13 @@ import { userResolver } from './user.resolver';
 import { titleResolver } from './title.resolver';
 import { authGuard } from './auth.guard';
 import { canDeactivateGuard } from './can-deactivate.guard';
+import { AuthComponent } from './auth/auth.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-
+  { path: 'auth', component: AuthComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
   {
     path: 'home',
     component: HomeComponent,

@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+
+  <div *ngIf="offline" class="offline-banner">
+    You are offline. Showing cached data (if available).
+  </div>
+
+  <div *ngIf="updateAvailable" class="update-banner">
+    A new version of the app is available.
+    <button (click)="reloadApp()">Reload</button>
+  </div>
+
+  <button (click)="loadProducts()">Reload products</button>
+
+  <ul>
+    <li *ngFor="let p of products">
+      <strong>{{ p.title }}</strong> - {{ p.price | currency:'INR' }}
+    </li>
+  </ul>
+</div>

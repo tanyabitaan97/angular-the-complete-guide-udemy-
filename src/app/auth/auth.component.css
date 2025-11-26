@@ -1,0 +1,28 @@
+.auth-container {
+  width: 340px;
+  margin: 80px auto;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+input, .btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+  color: #007bff;
+}
