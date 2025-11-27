@@ -191,7 +191,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
     <h1>Angular 17 Animation with AppModule</h1>
 
-    <app-product></app-product>
+    <app-counter-signal></app-counter-signal>
  
     <nav>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">

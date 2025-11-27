@@ -28,6 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ProductComponent } from './product/product.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CounterSignalComponent } from './counter-signal/counter-signal.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -102,7 +103,8 @@ export const routes: Routes = [
 @NgModule({
   declarations: [CustomInputComponent, HostDemoComponent, AnimDemoComponent,
     ContentViewDemoComponent, AppComponent, HomeComponent, UsersComponent, UserDetailComponent,
-    ParentComponent, ChildComponent, GuardedEditComponent, ProductComponent,AuthComponent, DashboardComponent],
+    ParentComponent, ChildComponent, GuardedEditComponent, ProductComponent,AuthComponent, DashboardComponent,
+    CounterSignalComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

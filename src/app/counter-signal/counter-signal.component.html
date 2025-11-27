@@ -1,0 +1,21 @@
+<h2>Angular 17 Signals Demo</h2>
+
+<p><b>Count:</b> {{ count() }}</p>
+<p><b>Readonly Count:</b> {{ readonlyCount() }}</p>
+<p><b>Double Count (computed):</b> {{ doubleCount() }}</p>
+
+<button (click)="increment()">Increment</button>
+<button (click)="logPeek()">Log Peek</button>
+<button (click)="checkSignal()">Check Signal</button>
+
+<hr />
+
+<h3>User Config</h3>
+<p><b>Name:</b> {{ config().name }}</p>
+
+<p><b>Skills:</b></p>
+<ul>
+  <li *ngFor="let skill of config().skills">{{ skill }}</li>
+</ul>
+
+<button (click)="addSkill()">Add Skill</button>
